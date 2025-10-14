@@ -94,3 +94,59 @@
 .alert .retry:hover { filter: brightness(1.05); }
 .alert .retry:active { transform: translateY(1px); }
 //*Alert Styles**/
+
+:root{
+  --g1: 214, 233, 205;   /* soft mint */
+  --g2: 210, 205, 255;   /* soft violet */
+  --ink: #2b235a;
+}
+
+.hero{
+  display:grid;
+  place-items:center;
+  text-align:center;
+  margin:1rem auto 1rem;
+  padding:1.25rem 1.5rem;
+  width:min(680px, 92vw);
+  border-radius:20px;                 /* no visible border */
+  background:
+    linear-gradient(135deg,
+      rgba(var(--g1),0.45),
+      rgba(var(--g2),0.45));
+  box-shadow:
+    0 10px 30px rgba(100, 80, 200, .15),
+    0 2px 6px rgba(20, 20, 40, .06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: heroIntro .6s ease-out both;
+}
+
+.hero-title{
+  margin:0;
+  font-size:clamp(1.4rem, 2.2vw + 1rem, 2.2rem);
+  letter-spacing:.4px;
+  color:var(--ink);
+  font-weight:700;
+}
+
+.hero-tag{
+  margin:.25rem 0 0;
+  font-size:clamp(.95rem, .6vw + .8rem, 1.05rem);
+  color:rgba(43,35,90,.85);
+}
+
+/* subtle sheen that matches your bubbles */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:radial-gradient(1200px 400px at 0% -10%,
+             rgba(255,255,255,.35), transparent 55%);
+  pointer-events:none;
+}
+
+@keyframes heroIntro{
+  from{ transform:translateY(6px); opacity:0; }
+  to  { transform:translateY(0);   opacity:1; }
+}

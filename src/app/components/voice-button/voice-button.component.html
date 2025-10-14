@@ -1,6 +1,11 @@
 
 
  <div style="display:grid;place-items:center;min-height:60vh;" *ngIf="status!=='live'">
+
+  <div class="hero" *ngIf="status==='idle'">
+    <span aria-hidden="true">AI quote assistant</span>
+  </div>
+
     <button class="creative-button" (click)="toggle()">
     <span class="button-text">
   {{ status === 'idle' ? 'Start Voice Assistant'
@@ -19,5 +24,8 @@
     <button class="retry" (click)="toggle()">Retry</button>
   </div>
  </div>
+
+ <div style="display:flex;justify-content: center;">
  <app-voice-indicator *ngIf="status==='live'"></app-voice-indicator>
-   <app-payload-debug></app-payload-debug>
+<app-payload-debug></app-payload-debug>
+</div> 

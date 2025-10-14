@@ -10,12 +10,7 @@ import { Payload } from "../../types/payload";
   imports: [CommonModule],
   template: `
   <div class="pd" *ngIf="payload$ | async as p">
-    <div class="row"><b>Make</b><span>{{p.vehicleDetails.make || '—'}}</span></div>
-    <div class="row"><b>Model</b><span>{{p.vehicleDetails.model || '—'}}</span></div>
-    <div class="row"><b>Year</b><span>{{p.vehicleDetails.year ?? '—'}}</span></div>
-    <div class="row"><b>Claims ≤3y</b><span>{{p.previousClaims.claimMadeInLast3Years === null ? '—' : p.previousClaims.claimMadeInLast3Years}}</span></div>
-    <div class="row"><b>At fault</b><span>{{p.previousClaims.claimAtFault === null ? '—' : p.previousClaims.claimAtFault}}</span></div>
-    <div class="row"><b>Postal</b><span>{{p.postalCode || '—'}}</span></div>
+    <pre>{{p | json}}</pre>
   </div>`,
   styles: [`
     .pd{ margin-top:10px; padding:10px 12px; border-radius:12px;
