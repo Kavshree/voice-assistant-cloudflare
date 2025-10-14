@@ -1,0 +1,23 @@
+
+
+ <div style="display:grid;place-items:center;min-height:60vh;" *ngIf="status!=='live'">
+    <button class="creative-button" (click)="toggle()">
+    <span class="button-text">
+  {{ status === 'idle' ? 'Start Voice Assistant'
+    : status === 'connecting' ? 'Connecting…'
+    : status === 'error' ? 'Error — Retry'
+    : 'Mic Permission Denied' }}</span>
+    </button>
+  <div *ngIf="status==='permission-denied'"
+      class="alert alert-error"
+      role="alert" aria-live="assertive">
+    <span class="icon" aria-hidden="true">!</span>
+    <div class="msg">
+      <strong>Microphone blocked.</strong>
+      <div>Please allow microphone access (click the lock icon near the address bar → <em>Site settings</em> → <em>Microphone: Allow</em>) and reload.</div>
+    </div>
+    <button class="retry" (click)="toggle()">Retry</button>
+  </div>
+ </div>
+ <app-voice-indicator *ngIf="status==='live'"></app-voice-indicator>
+   <app-payload-debug></app-payload-debug>
